@@ -13,7 +13,7 @@ public class CreateUserTests {
         //Arrange
         String body = "{\"name\":\"Shadab Ansari\",\n" +
                 " \"gender\":\"male\",\n" +
-                "  \"email\":\"shadabzt1512@gmail.com\",\n" +
+                "  \"email\":\"shadabzt15t12@gmail.com\",\n" +
                 "   \"status\":\"active\"}";
         //Act
         new UsersClient().createUser(body)
@@ -22,7 +22,7 @@ public class CreateUserTests {
         //Assert
                 .statusCode(201)
                 .body("id", Matchers.notNullValue())
-                .body("email",Matchers.equalTo("shadabzt1512@gmail.com"))
+                .body("email",Matchers.equalTo("shadabzt15t12@gmail.com"))
                 .body("name",Matchers.equalTo("Shadab Ansari"))
         ;
     }
@@ -34,7 +34,7 @@ public class CreateUserTests {
         //Arrange
         String body = "{\"name\":\"Aditi Rao\",\n" +
                 " \"gender\":\"female\",\n" +
-                "  \"email\":\"aditirao1t512@gmail.com\",\n" +
+                "  \"email\":\"aditirao1t5412@gmail.com\",\n" +
                 "   \"status\":\"active\"}";
         //Act
         new UsersClient().createUser(body)
@@ -43,7 +43,7 @@ public class CreateUserTests {
         //Assert
                 .statusCode(201)
                 .body("id", Matchers.notNullValue())
-                .body("email",Matchers.equalTo("aditirao1t512@gmail.com"))
+                .body("email",Matchers.equalTo("aditirao1t5412@gmail.com"))
                 .body("name",Matchers.equalTo("Aditi Rao"))
         ;
     }
