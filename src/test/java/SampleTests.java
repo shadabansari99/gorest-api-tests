@@ -6,6 +6,7 @@ public class SampleTests {
     public void shouldTestSomething()
     {
         Assert.assertEquals(1,1);
+        //add
     }
 
 }
