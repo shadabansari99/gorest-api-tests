@@ -20,6 +20,7 @@ public class SampleTests {
                 .statusCode(200)
                 .log()
                 .body();
+        
 
     }
 
