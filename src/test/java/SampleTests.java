@@ -30,9 +30,9 @@ public class SampleTests {
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer 7cdd64aabb300d0ca6a50051902eb68272e854a594eb5dd472fd70bb59377b20")
-                .body("{\"name\":\"Tenali Ramakrishna\",\n" +
+                .body("{\"name\":\"Shadab Ansari\",\n" +
                         " \"gender\":\"male\",\n" +
-                        "  \"email\":\"tenali.ramakrishna@1h1j.com\",\n" +
+                        "  \"email\":\"shadab99121@gmail.com\",\n" +
                         "   \"status\":\"active\"}")
                 .when()
                 .post("https://gorest.co.in/public/v2/users")
@@ -40,7 +40,8 @@ public class SampleTests {
                 .log().body()
                 .statusCode(201)
                 .body("id", Matchers.notNullValue())
-                .body("email",Matchers.equalTo("tenali.ramakrishna@1h1j.com"))
+                .body("email",Matchers.equalTo("shadab99121@gmail.com"))
+                .body("name",Matchers.equalTo("Shadab Ansari"))
                 ;
     }
 
