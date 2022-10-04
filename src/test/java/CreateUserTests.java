@@ -39,11 +39,11 @@ public class CreateUserTests {
         //Act
         CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
         //Assert
-        assertEquals(createUserResponse.getStatusCode(),201);
-        assertNotNull(createUserResponse.getData().getId());
+        createUserResponse.assertUser(requestBody);
 
-        assertEquals(createUserResponse.getData().getEmail(),requestBody.getEmail());
-        assertEquals(createUserResponse.getData().getName(),requestBody.getName());
+
+
+
     }
 
 
@@ -63,11 +63,8 @@ public class CreateUserTests {
         CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
 
         //Assert
-        assertEquals(createUserResponse.getStatusCode(),201);
-        assertNotNull(createUserResponse.getData().getId());
+        createUserResponse.assertUser(requestBody);
 
-        assertEquals(createUserResponse.getData().getEmail(),requestBody.getEmail());
-        assertEquals(createUserResponse.getData().getName(),requestBody.getName());
     }
 
 
