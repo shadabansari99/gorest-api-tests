@@ -28,8 +28,8 @@ public class GetAllUsersTests {
                     .then()
          //Assert
                      .statusCode(200)
-                     .body("", Matchers.hasSize(10))
-                     .body("",Matchers.hasItem(Matchers.hasEntry("gender","female")))
+                     .body("data", Matchers.hasSize(10))
+                     .body("data",Matchers.hasItem(Matchers.hasEntry("gender","female")))
                      .log().body();
     }
 

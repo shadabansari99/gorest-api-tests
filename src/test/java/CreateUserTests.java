@@ -1,23 +1,26 @@
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 import users.create.CreateUserRequestBody;
+import users.create.response.CreateUserResponse;
 
 import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
+import static org.testng.Assert.*;
 
 public class CreateUserTests {
 
-    private UsersClient userClient;
+    private UsersClient usersClient;
 
     @BeforeClass
     public void beforeClass()
     {
-        userClient = new UsersClient();
+        usersClient = new UsersClient();
     }
 
     @Test
@@ -34,15 +37,13 @@ public class CreateUserTests {
                 .status("active")
                 .build();
         //Act
-        new UsersClient().createUser(requestBody)
-                .then()
-                .log().body()
+        CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
         //Assert
-                .statusCode(201)
-                .body("id", Matchers.notNullValue())
-                .body("email",Matchers.equalTo(email))
-                .body("name",Matchers.equalTo("Shadab Ansari"))
-        ;
+        assertEquals(createUserResponse.getStatusCode(),201);
+        assertNotNull(createUserResponse.getData().getId());
+
+        assertEquals(createUserResponse.getData().getEmail(),requestBody.getEmail());
+        assertEquals(createUserResponse.getData().getName(),requestBody.getName());
     }
 
 
@@ -59,15 +60,14 @@ public class CreateUserTests {
                 .status("active")
                 .build();
         //Act
-        new UsersClient().createUser(requestBody)
-                .then()
-                .log().body()
+        CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
+
         //Assert
-                .statusCode(201)
-                .body("id", Matchers.notNullValue())
-                .body("email",Matchers.equalTo(email))
-                .body("name",Matchers.equalTo("Aditi Rao"))
-        ;
+        assertEquals(createUserResponse.getStatusCode(),201);
+        assertNotNull(createUserResponse.getData().getId());
+
+        assertEquals(createUserResponse.getData().getEmail(),requestBody.getEmail());
+        assertEquals(createUserResponse.getData().getName(),requestBody.getName());
     }
 
 

@@ -3,13 +3,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 import users.create.CreateUserRequestBody;
+import users.create.response.CreateUserResponse;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class CreateUserNegativeTests {
-    private UsersClient userClient;
+    private UsersClient usersClient;
     @BeforeClass
     public void beforeClass()
     {
-        userClient = new UsersClient();
+        usersClient = new UsersClient();
     }
 
     @Test
@@ -24,12 +28,12 @@ public class CreateUserNegativeTests {
                 .status("active")
                 .build();
         //Act
-        userClient.createUser(requestBody)
+        usersClient.create(requestBody)
+
+        //Assert
                 .then()
-                .log().body()
-                //Assert
                 .statusCode(422)
-                .body("", Matchers.hasItem(Matchers.hasEntry("field","email")))
-                .body("",Matchers.hasItem(Matchers.hasEntry("message","is invalid")));
+                .body("data", Matchers.hasItem(Matchers.hasEntry("field","email")))
+                .body("data",Matchers.hasItem(Matchers.hasEntry("message","is invalid")));
     }
 }
