@@ -3,6 +3,7 @@ package users;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import users.create.CreateUserRequestBody;
+import users.create.response.CreateUserErrorResponse;
 import users.create.response.CreateUserResponse;
 
 import static io.restassured.RestAssured.given;
@@ -15,6 +16,13 @@ public class UsersClient {
         createUserResponse.setStatusCode(response.statusCode());
         return createUserResponse;
     }
+    public CreateUserErrorResponse createUserExpectingError (CreateUserRequestBody body){
+        Response response = create(body);
+        CreateUserErrorResponse errorResponse = response.as(CreateUserErrorResponse.class);
+        errorResponse.setStatuscode(response.statusCode());
+        return errorResponse;
+    }
+
 
     public Response create(CreateUserRequestBody body) {
         Response response = given()
@@ -36,4 +44,5 @@ public class UsersClient {
                     .when()
                     .get("https://gorest.co.in/public/v1/users");
     }
+
 }
