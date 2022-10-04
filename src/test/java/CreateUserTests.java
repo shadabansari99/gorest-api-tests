@@ -26,12 +26,13 @@ public class CreateUserTests {
         //Arrange
         String email = String.format("%s@gmail.com", UUID.randomUUID());
 
-        String name = "Shadab Ansari";
-        String gender = "male";
-        String status = "active";
-
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name,gender,email,status);
-
+        //CreateUserRequestBody requestBody = new CreateUserRequestBody(name,gender,email,status);
+        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
+                .name("Shadab Ansari")
+                .gender("male")
+                .email(email)
+                .status("active")
+                .build();
         //Act
         new UsersClient().createUser(requestBody)
                 .then()
@@ -51,11 +52,12 @@ public class CreateUserTests {
         //Arrange
         String email = String.format("%s@gmail.com", UUID.randomUUID());
 
-        String name = "Aditi Rao";
-        String gender = "female";
-        String status = "active";
-
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name,gender,email,status);
+        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
+                .name("Aditi Rao")
+                .gender("female")
+                .email(email)
+                .status("active")
+                .build();
         //Act
         new UsersClient().createUser(requestBody)
                 .then()
