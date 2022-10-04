@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import users.create.CreateUserRequestBody;
 import users.create.response.CreateUserErrorResponse;
 import users.create.response.CreateUserResponse;
+import users.getAll.GetAllUsersResponse;
 
 import static io.restassured.RestAssured.given;
 
@@ -38,11 +39,17 @@ public class UsersClient {
         return response;
     }
 
-    public static Response getAllUsers() {
-        return
-                given()
-                    .when()
-                    .get("https://gorest.co.in/public/v1/users");
+    public GetAllUsersResponse getAllUsers() {
+        Response response = given()
+                .when()
+                .get("https://gorest.co.in/public/v1/users");
+        response.then()
+                .log()
+                .body();
+        int statusCode = response.statusCode();
+        GetAllUsersResponse getAllUsersResponse = response.as(GetAllUsersResponse.class);
+       getAllUsersResponse.setStatusCode(statusCode);
+        return getAllUsersResponse;
     }
 
 }
