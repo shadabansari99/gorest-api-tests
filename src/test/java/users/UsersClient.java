@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import users.create.CreateUserRequestBody;
 import users.create.response.CreateUserErrorResponse;
 import users.create.response.CreateUserResponse;
+import users.get.GetUserResponse;
 import users.getAll.GetAllUsersResponse;
 
 import static io.restassured.RestAssured.given;
@@ -51,5 +52,17 @@ public class UsersClient {
        getAllUsersResponse.setStatusCode(statusCode);
         return getAllUsersResponse;
     }
-
+public GetUserResponse getUser(int id)
+{
+    Response response = given()
+            .pathParam("id", id)
+            .header("Authorization", "Bearer 7cdd64aabb300d0ca6a50051902eb68272e854a594eb5dd472fd70bb59377b20")
+            .when()
+            .get("https://gorest.co.in/public/v1/users/{id}");
+    response.then().log().body();
+        int statusCode = response.statusCode();
+    GetUserResponse getUserResponse = response.as(GetUserResponse.class);
+    getUserResponse.setStatusCode(statusCode);
+    return getUserResponse;
+}
 }
