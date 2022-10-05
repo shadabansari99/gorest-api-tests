@@ -24,4 +24,12 @@ public class CreateUserResponse {
         assertEquals(this.getData().getStatus(),requestBody.getStatus());
 
     }
+    @Getter
+public class Data {
+    private int id;
+    private String name;
+    private String gender;
+    private String email;
+    private String status;
+}
 }

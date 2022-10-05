@@ -27,15 +27,18 @@ public class CreateUserTests {
     public void shouldCreateMaleUser()
     {
         //Arrange
-        String email = String.format("%s@gmail.com", UUID.randomUUID());
+//        String email = String.format("%s@gmail.com", UUID.randomUUID());
+//
+//        //CreateUserRequestBody requestBody = new CreateUserRequestBody(name,gender,email,status);
+//        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
+//                .name("Shadab Ansari")
+//                .gender("male")
+//                .email(email)
+//                .status("active")
+//                .build();
 
-        //CreateUserRequestBody requestBody = new CreateUserRequestBody(name,gender,email,status);
-        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
-                .name("Shadab Ansari")
-                .gender("male")
-                .email(email)
-                .status("active")
-                .build();
+        CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().gender("male").build();
+
         //Act
         CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
         //Assert
@@ -51,14 +54,7 @@ public class CreateUserTests {
     public void shouldCreateFemaleUser()
     {
         //Arrange
-        String email = String.format("%s@gmail.com", UUID.randomUUID());
-
-        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
-                .name("Aditi Rao")
-                .gender("female")
-                .email(email)
-                .status("active")
-                .build();
+        CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().gender("female").build();
         //Act
         CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
 

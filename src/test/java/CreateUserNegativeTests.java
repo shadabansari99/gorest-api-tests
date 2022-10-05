@@ -24,12 +24,7 @@ public class CreateUserNegativeTests {
     {
         //Arrange
 
-        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
-                .name("Aditi Rao")
-                .gender("female")
-                .email("aditirao121gmail.com")
-                .status("active")
-                .build();
+        CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().email("shadabgmail.com").build();
         //Act
         CreateUserErrorResponse errorResponse = usersClient.createUserExpectingError(requestBody);
 
@@ -42,13 +37,7 @@ public class CreateUserNegativeTests {
     public void shouldNotAllowToCreateUserWithBlankGenderAndStatus()
     {
         //Arrange
-
-        CreateUserRequestBody requestBody =  CreateUserRequestBody.builder()
-                .name("Aditi Rao")
-                .gender("")
-                .email("aditirao12ewew1@gmail.com")
-                .status("")
-                .build();
+        CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().gender("").status("").build();
         //Act
         CreateUserErrorResponse errorResponse = usersClient.createUserExpectingError(requestBody);
 
