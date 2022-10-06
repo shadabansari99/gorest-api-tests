@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
+import users.UsersService;
 import users.create.CreateUserRequestBody;
 import users.create.response.CreateUserResponse;
 
@@ -15,12 +16,12 @@ import static org.testng.Assert.*;
 
 public class CreateUserTests {
 
-    private UsersClient usersClient;
+    private UsersService usersService;
 
     @BeforeClass
     public void beforeClass()
     {
-        usersClient = new UsersClient();
+        usersService = new UsersService();
     }
 
     @Test
@@ -40,7 +41,7 @@ public class CreateUserTests {
         CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().gender("male").build();
 
         //Act
-        CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
+        CreateUserResponse createUserResponse = new UsersService().createUser(requestBody);
         //Assert
         createUserResponse.assertUser(requestBody);
 
@@ -56,7 +57,7 @@ public class CreateUserTests {
         //Arrange
         CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().gender("female").build();
         //Act
-        CreateUserResponse createUserResponse = new UsersClient().createUser(requestBody);
+        CreateUserResponse createUserResponse = new UsersService().createUser(requestBody);
 
         //Assert
         createUserResponse.assertUser(requestBody);

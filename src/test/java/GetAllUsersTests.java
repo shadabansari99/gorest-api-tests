@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import users.UsersClient;
+import users.UsersService;
 import users.getAll.GetAllUsersResponse;
 
 import static io.restassured.RestAssured.get;
@@ -13,19 +14,19 @@ import static io.restassured.RestAssured.given;
 public class GetAllUsersTests {
 
     //Arrange
-    private UsersClient usersClient;
+    private UsersService usersService;
 
     @BeforeClass
     public void beforeClass()
     {
-        usersClient = new UsersClient();
+        usersService = new UsersService();
     }
 
     @Test
     public void shouldGetAllUsers()
     {
         //Act
-        GetAllUsersResponse getAllUsersResponse = usersClient.getAllUsers();
+        GetAllUsersResponse getAllUsersResponse = usersService.getAllUsers();
 
         //Assert
                 Assert.assertEquals(getAllUsersResponse.getStatusCode(),200);

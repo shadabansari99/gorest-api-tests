@@ -3,6 +3,7 @@ package integrationTests;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
+import users.UsersService;
 import users.create.CreateUserRequestBody;
 import users.create.response.CreateUserResponse;
 
@@ -10,12 +11,12 @@ import java.util.UUID;
 
 public class UserTests {
 
-    private UsersClient usersClient;
+    private UsersService usersService;
 
     @BeforeClass
     public void beforeClass()
     {
-        usersClient = new UsersClient();
+        usersService = new UsersService();
     }
 
     @Test
@@ -24,9 +25,9 @@ public class UserTests {
         //Arrange
         CreateUserRequestBody requestBody = new CreateUserRequestBody.Builder().build();
         //Act
-        int id = usersClient.createUser(requestBody).getData().getId();
+        int id = usersService.createUser(requestBody).getData().getId();
         //Assert
-        usersClient.getUser(id).assertUser(requestBody);
+        usersService.getUser(id).assertUser(requestBody);
 
 
 
