@@ -41,8 +41,6 @@ public class UserTests {
         //Assert
         Assert.assertEquals(statusCode, 204);
         usersService.getUserExpectingError(id).assertError(404, "Resource not found");
-
-
     }
 
 

@@ -7,6 +7,8 @@ import users.create.response.CreateUserResponse;
 import users.get.GetUserErrorResponse;
 import users.get.GetUserResponse;
 import users.getAll.GetAllUsersResponse;
+import users.update.UpdateUserRequestBody;
+import users.update.response.UpdateUserResponse;
 
 public class UsersService {
     public CreateUserResponse createUser(CreateUserRequestBody body) {
@@ -39,7 +41,8 @@ public class UsersService {
     }
     public int deleteUser(int id) {
         Response response = new UsersClient().delete(id);
-       return response.statusCode();
+        int statusCode = response.statusCode();
+        return response.statusCode();
     }
     public GetUserErrorResponse getUserExpectingError(int id) {
         Response response = new UsersClient().get(id);
@@ -49,5 +52,11 @@ public class UsersService {
         GetUserErrorResponse getUserErrorResponse = response.as(GetUserErrorResponse.class);
         getUserErrorResponse.setStatusCode(statusCode);
         return getUserErrorResponse;
+    }
+    public UpdateUserResponse UpdateUser(UpdateUserRequestBody body, int id) {
+        Response response =   new UsersClient().update(body,id);
+        UpdateUserResponse  updateUserResponse = response.as( UpdateUserResponse.class);
+        updateUserResponse.setStatusCode(response.statusCode());
+        return updateUserResponse;
     }
 }
