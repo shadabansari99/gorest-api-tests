@@ -15,7 +15,9 @@ public class UpdateUserTests {
 
     @Test
     public void shouldUpdateUser() {
-        UpdateUserRequestBody updateUserRequestBody = new UpdateUserRequestBody.Builder().email("tv1@gmail.com").status("inactive").build();
+        UpdateUserRequestBody updateUserRequestBody = new UpdateUserRequestBody.Builder()
+                .email("tv1@gmail.com")
+                .status("inactive").build();
         int id = 2688;
         UpdateUserResponse updateUserResponse = usersService.UpdateUser(updateUserRequestBody,id);
         updateUserResponse.assertUser(updateUserRequestBody);

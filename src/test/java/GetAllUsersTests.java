@@ -22,7 +22,7 @@ public class GetAllUsersTests {
         usersService = new UsersService();
     }
 
-    @Test
+    @Test(groups="api", description = "Should get all the users")
     public void shouldGetAllUsers()
     {
         //Act

@@ -28,7 +28,7 @@ public class UpdateUserRequestBody {
 
         public Builder() {
             this.name = "Created-Default";
-            this.email = String.format("%s@gmail.com", UUID.randomUUID());
+            this.email = String.format("default%s@gmail.com", UUID.randomUUID());
             this.gender = "male";
             this.status = "active";
         }
@@ -36,6 +36,11 @@ public class UpdateUserRequestBody {
         public Builder gender(String gender) {
 
             this.gender = gender;
+            return this;
+        }
+        public Builder name(String name) {
+
+            this.name = name;
             return this;
         }
 

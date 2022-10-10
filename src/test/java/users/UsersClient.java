@@ -62,7 +62,7 @@ public class UsersClient {
                 .header("Authorization", "Bearer 7cdd64aabb300d0ca6a50051902eb68272e854a594eb5dd472fd70bb59377b20")
                 .body(body)
                 .when()
-                .patch("https://gorest.co.in/public/v2/users/{id}");
+                .patch("https://gorest.co.in/public/v1/users/{id}");
 
         response.then().log().body();
         return response;
